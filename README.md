@@ -29,9 +29,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-launchCounter = LaunchCounter(userDefaults: userDefaults)
-
-
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
