@@ -9,29 +9,23 @@
 Pod::Spec.new do |s|
   s.name             = 'LaunchCounter'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of LaunchCounter.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'Keep track of the number of times an app was launched. '
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Add a call to this class on app launch to increment the app launch count. Query it to find out if it's the first launch or get the specific number of launches.
                        DESC
 
   s.homepage         = 'https://github.com/megatron1000/LaunchCounter'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'megatron1000' => 'mark@bridgetech.io' }
   s.source           = { :git => 'https://github.com/megatron1000/LaunchCounter.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/MarkBridgesApps'
 
-  s.platform = :osx
-  s.osx.deployment_target = "10.10"
+  s.platforms = { :ios => "8.0", :osx => "10.9", :watchos => "2.0", :tvos => "9.0" }
 
   s.source_files = 'LaunchCounter/Classes/**/*'
+  s.swift_version = '4.1'
+
 
   # s.resource_bundles = {
   #   'LaunchCounter' => ['LaunchCounter/Assets/*.png']
@@ -40,4 +34,5 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'Cocoa'
   # s.dependency 'AFNetworking', '~> 2.3'
+  
 end

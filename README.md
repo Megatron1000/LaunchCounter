@@ -5,11 +5,34 @@
 [![License](https://img.shields.io/cocoapods/l/LaunchCounter.svg?style=flat)](https://cocoapods.org/pods/LaunchCounter)
 [![Platform](https://img.shields.io/cocoapods/p/LaunchCounter.svg?style=flat)](https://cocoapods.org/pods/LaunchCounter)
 
+## Description 
+
+A very simple mechanism for tracking the number of times your app has been launched. Useful for running certain activities the very first time the app is launched, for example.
+
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+In your app delegate
 
-## Requirements
+```    
+let launchCounter = LaunchCounter()
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+    // Record that the app was launched
+    launchCounter.trackLaunch()
+
+    if launchCounter.isFirstLaunch {
+        // Do something only on first launch 
+    }
+
+    return true
+}
+```
+
+launchCounter = LaunchCounter(userDefaults: userDefaults)
+
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
 

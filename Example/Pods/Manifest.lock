@@ -1,0 +1,16 @@
+PODS:
+  - LaunchCounter (0.1.0)
+
+DEPENDENCIES:
+  - LaunchCounter (from `../`)
+
+EXTERNAL SOURCES:
+  LaunchCounter:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LaunchCounter: 78ab5225c67b6763545a055e5c52d874fcb27bae
+
+PODFILE CHECKSUM: 12b5c4a34080063548565f10a1d3638f005341fa
+
+COCOAPODS: 1.4.0
