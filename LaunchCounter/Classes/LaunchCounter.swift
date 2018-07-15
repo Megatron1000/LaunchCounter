@@ -46,7 +46,11 @@ public class LaunchCounter {
     public var launchCount: Int {
         let currentLaunchCount = getLaunchCount()
         guard currentLaunchCount != 0 else {
+            #if DEBUG
             fatalError("trackLaunch hasn't been called. Please ensure you call trackLaunch before querying the launchCount.")
+            #else
+            print("trackLaunch hasn't been called. Please ensure you call trackLaunch before querying the launchCount.")
+            #endif
         }
         return currentLaunchCount
     }
