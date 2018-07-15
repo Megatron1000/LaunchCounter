@@ -50,6 +50,7 @@ public class LaunchCounter {
             fatalError("trackLaunch hasn't been called. Please ensure you call trackLaunch before querying the launchCount.")
             #else
             print("trackLaunch hasn't been called. Please ensure you call trackLaunch before querying the launchCount.")
+            return currentLaunchCount
             #endif
         }
         return currentLaunchCount
