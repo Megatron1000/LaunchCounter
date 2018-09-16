@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LaunchCounter'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'Keep track of the number of times an app was launched. '
 
   s.description      = <<-DESC
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.platforms = { :ios => "8.0", :osx => "10.9", :watchos => "2.0", :tvos => "9.0" }
 
   s.source_files = 'LaunchCounter/Classes/**/*'
-  s.swift_version = '4.1'
+  s.swift_version = '4.2'
 
 
   # s.resource_bundles = {
