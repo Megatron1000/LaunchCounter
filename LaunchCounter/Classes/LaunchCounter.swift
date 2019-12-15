@@ -86,4 +86,14 @@ public class LaunchCounter {
         return dateOfFirstLaunch
     }
     
+    public var daysSinceFirstLaunch: Int {
+        guard let dateOfFirstLaunch = self.dateOfFirstLaunch else {
+            return 0
+        }
+        
+        let components = Calendar.current.dateComponents([.day], from: dateOfFirstLaunch, to: Date())
+
+        return components.day ?? 0
+    }
+    
 }

@@ -70,6 +70,12 @@ class LaunchCounterTests: XCTestCase {
         launchCounter.trackLaunch()
         XCTAssertEqual(originalDateOfFirstLaunch, launchCounter.dateOfFirstLaunch)
     }
+    
+    func testDaysSinceFirstLaunch() {
+        let dateOneDayinThePast = Date().addingTimeInterval(-(60*60*24))
+        launchCounter.userDefaults.set(dateOneDayinThePast.timeIntervalSince1970, forKey: launchCounter.firstLaunchDateKey)
+        XCTAssertEqual(launchCounter.daysSinceFirstLaunch, 1)
+    }
         
 }
 
