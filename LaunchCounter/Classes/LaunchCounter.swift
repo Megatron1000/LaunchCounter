@@ -26,6 +26,7 @@ public class LaunchCounter {
     
     public let userDefaults: UserDefaults
     public let launchCountKey: String
+    public let firstLaunchDateKey: String
     
     /// Initialise the class
     ///
@@ -33,27 +34,29 @@ public class LaunchCounter {
     ///   - userDefaults: custom user defaults, if you don't wish to store the count in the standard ones
     ///   - launchCountKey: a custom key, if you don't wish to use the default one (derived from the app's bundle identifier)
     public init(userDefaults: UserDefaults = UserDefaults.standard,
-                launchCountKey: String = (Bundle.main.bundleIdentifier ?? "unknown.bundle.identifier") + "launchCount" ) {
+                launchCountKey: String = (Bundle.main.bundleIdentifier ?? "unknown.bundle.identifier") + "launchCount",
+                firstLaunchDateKey: String = (Bundle.main.bundleIdentifier ?? "unknown.bundle.identifier") + "firstLaunchDate") {
         self.userDefaults = userDefaults
         self.launchCountKey = launchCountKey
+        self.firstLaunchDateKey = firstLaunchDateKey
     }
     
     /// Call this inside applicationWillFinishLaunching or applicationDidFinishLaunching. Make sure you call it before checking the launchCount
     public func trackLaunch() {
         let currentLaunchCount = getLaunchCount()
         userDefaults.set(currentLaunchCount + 1, forKey: launchCountKey)
+        
+        if dateOfFirstLaunch == nil {
+            userDefaults.set(Date().timeIntervalSince1970, forKey: firstLaunchDateKey)
+        }
     }
     
     /// the number of times the app was launched (1 on first launch)
     public var launchCount: Int {
         let currentLaunchCount = getLaunchCount()
         guard currentLaunchCount != 0 else {
-            #if DEBUG
-            fatalError("trackLaunch hasn't been called. Please ensure you call trackLaunch before querying the launchCount.")
-            #else
-            print("trackLaunch hasn't been called. Please ensure you call trackLaunch before querying the launchCount.")
+            assertionFailure("trackLaunch hasn't been called. Please ensure you call trackLaunch before querying the launchCount.")
             return currentLaunchCount
-            #endif
         }
         return currentLaunchCount
     }
@@ -66,11 +69,21 @@ public class LaunchCounter {
     /// reset back to zero. Make sure you remember to call trackLaunch afterwards, if doing this as part of initialisation
     public func reset() {
         userDefaults.removeObject(forKey: launchCountKey)
+        userDefaults.removeObject(forKey: firstLaunchDateKey)
     }
     
     private func getLaunchCount() -> Int {
         return userDefaults.integer(forKey: launchCountKey)
     }
     
+    public var dateOfFirstLaunch: Date? {
+        guard userDefaults.object(forKey: firstLaunchDateKey) != nil else {
+            return nil
+        }
+            
+        let timeIntervalSince1970 = userDefaults.double(forKey: firstLaunchDateKey)
+        let dateOfFirstLaunch = Date(timeIntervalSince1970: timeIntervalSince1970)
+        return dateOfFirstLaunch
+    }
     
 }

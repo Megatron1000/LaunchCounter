@@ -48,6 +48,28 @@ class LaunchCounterTests: XCTestCase {
         launchCounter.trackLaunch()
         XCTAssertTrue(launchCounter.isFirstLaunch)
     }
+    
+    func testDateOfFirstLaunchIsNilOnFirstLaunch() {
+        XCTAssertNil(launchCounter.dateOfFirstLaunch)
+    }
+    
+    func testDateOfFirstLaunchIsNotNilAfterLaunch() {
+        launchCounter.trackLaunch()
+        XCTAssertNotNil(launchCounter.dateOfFirstLaunch)
+    }
+    
+    func testDateOfFirstLaunchIsNilAfterLaunchAndReset() {
+        launchCounter.trackLaunch()
+        launchCounter.reset()
+        XCTAssertNil(launchCounter.dateOfFirstLaunch)
+    }
+    
+    func testDateOfFirstLaunchIsTheSameAfterSubsequentLaunches() {
+        launchCounter.trackLaunch()
+        let originalDateOfFirstLaunch = launchCounter.dateOfFirstLaunch
+        launchCounter.trackLaunch()
+        XCTAssertEqual(originalDateOfFirstLaunch, launchCounter.dateOfFirstLaunch)
+    }
         
 }
 
