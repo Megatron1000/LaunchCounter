@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/master.swiftdeps"
+  },
+  "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Tests/LaunchCounterTests/LaunchCounterTests.swift": {
+    "dependencies": "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests.d",
+    "object": "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests.swift.o",
+    "swiftmodule": "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests.swiftdeps"
+  }
+}

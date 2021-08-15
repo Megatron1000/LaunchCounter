@@ -1,0 +1,78 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "LaunchCounter-debug.module": ["<LaunchCounter-debug.module>"]
+  "LaunchCounterPackageTests-debug.test": ["<LaunchCounterPackageTests-debug.test>"]
+  "LaunchCounterTests-debug.module": ["<LaunchCounterTests-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<LaunchCounter-debug.module>"]
+  "test": ["<LaunchCounter-debug.module>","<LaunchCounterPackageTests-debug.test>","<LaunchCounterTests-debug.module>"]
+default: "main"
+nodes:
+  "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Sources/LaunchCounter/":
+    is-directory-structure: true
+  "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Tests/LaunchCounterTests/":
+    is-directory-structure: true
+commands:
+  "<LaunchCounter-debug.module>":
+    tool: phony
+    inputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.build/LaunchCounter.swift.o","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.swiftmodule"]
+    outputs: ["<LaunchCounter-debug.module>"]
+
+  "<LaunchCounterPackageTests-debug.test>":
+    tool: phony
+    inputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterPackageTests.xctest/Contents/MacOS/LaunchCounterPackageTests"]
+    outputs: ["<LaunchCounterPackageTests-debug.test>"]
+
+  "<LaunchCounterTests-debug.module>":
+    tool: phony
+    inputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests.swift.o","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.swiftmodule"]
+    outputs: ["<LaunchCounterTests-debug.module>"]
+
+  "C.LaunchCounter-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Sources/LaunchCounter/LaunchCounter.swift"]
+    outputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.build/LaunchCounter.swift.o","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "LaunchCounter"
+    module-output-path: "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.swiftmodule"
+    import-paths: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug"]
+    temps-path: "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.build"
+    objects: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.build/LaunchCounter.swift.o"]
+    other-args: ["-target","x86_64-apple-macosx10.11","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/index/store","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-emit-objc-header","-emit-objc-header-path","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.build/LaunchCounter-Swift.h","-color-diagnostics"]
+    sources: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Sources/LaunchCounter/LaunchCounter.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "C.LaunchCounterPackageTests-debug.test":
+    tool: shell
+    inputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.build/LaunchCounter.swift.o","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests.swift.o"]
+    outputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterPackageTests.xctest/Contents/MacOS/LaunchCounterPackageTests"]
+    description: "Linking ./.build/x86_64-apple-macosx/debug/LaunchCounterPackageTests.xctest/Contents/MacOS/LaunchCounterPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug","-o","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterPackageTests.xctest/Contents/MacOS/LaunchCounterPackageTests","-module-name","LaunchCounterPackageTests","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterPackageTests.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx","-target","x86_64-apple-macosx10.15","-Xlinker","-add_ast_path","-Xlinker","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.swiftmodule","-L","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"]
+
+  "C.LaunchCounterTests-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Tests/LaunchCounterTests/LaunchCounterTests.swift","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.swiftmodule"]
+    outputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests.swift.o","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "LaunchCounterTests"
+    module-output-path: "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.swiftmodule"
+    import-paths: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug"]
+    temps-path: "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build"
+    objects: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounterTests.build/LaunchCounterTests.swift.o"]
+    other-args: ["-target","x86_64-apple-macosx10.15","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/index/store","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-color-diagnostics"]
+    sources: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Tests/LaunchCounterTests/LaunchCounterTests.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Sources/LaunchCounter/","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Tests/LaunchCounterTests/","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Package.swift","/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

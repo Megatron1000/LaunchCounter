@@ -1,0 +1,5 @@
+version: "Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)"
+options: "4b9a9afddcee47b87883a7a944759842"
+build_time: [1629063466, 347220000]
+inputs:
+  "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/Tests/LaunchCounterTests/LaunchCounterTests.swift": [1576445626, 233678953]

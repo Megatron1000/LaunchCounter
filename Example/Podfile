@@ -1,6 +1,0 @@
-use_frameworks!
-target 'LaunchCounter_Tests' do
-  pod 'LaunchCounter', :path => '../'
-  
-  
-end

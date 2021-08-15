@@ -1,0 +1,4 @@
+module LaunchCounter {
+    header "/Users/markbridges/Dropbox/Apps/iOS Projects/LaunchCounter/.build/x86_64-apple-macosx/debug/LaunchCounter.build/LaunchCounter-Swift.h"
+    requires objc
+}
