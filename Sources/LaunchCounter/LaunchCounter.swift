@@ -30,6 +30,8 @@ public class LaunchCounter {
     public let appVersionsKey: String
     public let appVersion: String
     
+    public static let shared: LaunchCounter = LaunchCounter()
+    
     /// Initialise the class
     ///
     /// - Parameters:
@@ -48,6 +50,13 @@ public class LaunchCounter {
         self.firstLaunchDateKey = firstLaunchDateKey
         self.appVersionsKey = appVersionsKey
         self.appVersion = appVersion
+        
+        if CommandLine.arguments.contains("-reset-launch-count") {
+            userDefaults.removeObject(forKey: launchCountKey)
+            userDefaults.removeObject(forKey: firstLaunchDateKey)
+            userDefaults.removeObject(forKey: appVersionsKey)
+            userDefaults.removeObject(forKey: appVersion)
+        }
     }
     
     /// Call this inside applicationWillFinishLaunching or applicationDidFinishLaunching. Make sure you call it before checking the launchCount
@@ -64,7 +73,6 @@ public class LaunchCounter {
         launchCountForCurrentVersion = launchCountForCurrentVersion.advanced(by: 1)
         launchesForEachVersion[appVersion] = launchCountForCurrentVersion
         userDefaults.set(launchesForEachVersion, forKey: appVersionsKey)
-        
     }
     
     /// the number of times the app was launched (1 on first launch)
@@ -120,4 +128,24 @@ public class LaunchCounter {
         return components.day ?? 0
     }
     
+    public var firstLaunchVersion: String? {
+        guard let launchesForEachVersion = userDefaults.value(forKey: appVersionsKey) as? [String: Int] else {
+            return nil
+        }
+        
+        let sortedAppVersions = launchesForEachVersion.keys.sorted { lhs, rhs in
+            return lhs.compare(rhs, options: .numeric) == .orderedAscending
+        }
+                
+        return sortedAppVersions.first
+    }
+    
+    // true if this app has had multiple marketing versions run
+    public var hasUpgraded: Bool {
+        guard let launchesForEachVersion = userDefaults.value(forKey: appVersionsKey) as? [String: Int] else {
+            return false
+        }
+        return launchesForEachVersion.keys.count > 1
+    }
+        
 }

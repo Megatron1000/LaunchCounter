@@ -92,6 +92,42 @@ class LaunchCounterTests: XCTestCase {
         launchCounter2.trackLaunch()
         XCTAssertFalse(launchCounter2.isFirstLaunchOnNewVersion)
     }
+    
+    func testLaunchCountFirstLaunchVersion() {
+        let launchCounter = LaunchCounter(userDefaults: userDefaults, appVersion: "1.0")
+        launchCounter.trackLaunch()
+        launchCounter.trackLaunch()
+        
+        let launchCounter2 = LaunchCounter(userDefaults: userDefaults, appVersion: "1.1")
+        launchCounter2.trackLaunch()
+        launchCounter2.trackLaunch()
+        
+        XCTAssertEqual(launchCounter2.firstLaunchVersion, "1.0")
+    }
+    
+    func testHasUpgradedFalse() {
+        let launchCounter = LaunchCounter(userDefaults: userDefaults, appVersion: "1.0")
+        launchCounter.trackLaunch()
+        launchCounter.trackLaunch()
+        
+        let launchCounter2 = LaunchCounter(userDefaults: userDefaults, appVersion: "1.0")
+        launchCounter2.trackLaunch()
+        launchCounter2.trackLaunch()
+        
+        XCTAssertFalse(launchCounter2.hasUpgraded)
+    }
+    
+    func testHasUpgradedTrue() {
+        let launchCounter = LaunchCounter(userDefaults: userDefaults, appVersion: "1.0")
+        launchCounter.trackLaunch()
+        launchCounter.trackLaunch()
+        
+        let launchCounter2 = LaunchCounter(userDefaults: userDefaults, appVersion: "1.1")
+        launchCounter2.trackLaunch()
+        launchCounter2.trackLaunch()
+        
+        XCTAssertTrue(launchCounter2.hasUpgraded)
+    }
         
 }
 
